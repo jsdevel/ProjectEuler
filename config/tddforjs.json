@@ -1,0 +1,33 @@
+{
+   "reporting":{
+      "mode":"cli",
+      "available":[
+         "cli",
+         "junit",
+         "testng"
+      ],
+      "base":"../reports",
+      "output":{
+         "types":{
+            "junit":false,
+            "testng":false
+         }
+      }
+   },
+   "src":{
+      "base":"../src",
+      "js":"./",
+      "names":[
+         ".*\\.js"
+      ]
+   },
+   "test":{
+      "base":"../test",
+      "integrations":"./integrations",
+      "units":"./units",
+      "names":{
+         "units":[".*\\.js"],
+         "integrations":[".*\\.js"]
+      }
+   }
+}

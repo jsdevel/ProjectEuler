@@ -1,0 +1,25 @@
+{
+  "name": "ProjectEuler",
+  "version": "0.0.0",
+  "description": "My attempts at solving the problems found at http://projecteuler.net",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": [
+    "tddforjs"
+  ],
+  "devDependencies": {},
+  "scripts": {
+    "test": "bin/watch.bash"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsdevel/ProjectEuler.git"
+  },
+  "author": "Joseph Spencer",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/jsdevel/ProjectEuler/issues"
+  }
+}
