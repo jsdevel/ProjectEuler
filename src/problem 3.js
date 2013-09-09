@@ -1,13 +1,50 @@
 /*
  * The prime factors of 13195 are 5, 7, 13 and 29.
  * What is the largest prime factor of the number 600851475143 ?
+ * Answer: 6857
  */
 
+/*This is by far the fastest approach!  Thanks to Eric for helping me understand
+ *the concept!
+ */
 function findLargestPrimeFactor(number){
-   var half=number/2;
-   var divisor;
+   var limit=number;
    var i;
-   var largestPrime;
+
+   for(i=2;i<=limit;){
+      if(i===limit){
+         return limit;
+      }
+      if(limit % i === 0){
+         limit=limit/i;
+         i=2;
+      } else {
+         i++;
+      }
+   }
+}
+/*This was fast, but Eric had a better idea which wouldn't involve memory
+ *consumption
+function findLargestPrimeFactor(number){
+   var i;
+   var len;
+   var factors=findFactors(number);
+
+   factors.sort(function(a,b){return b-a;});
+
+   len=factors.length;
+   for(i=0;i<len;i++){
+      if(isPrime(factors[i])){
+         return factors[i];
+      }
+   }
+}*/
+/*This was extremely slow, but it worked.
+function findLargestPrimeFactor(number){
+   var half=(number/2)-((number/2)%1);
+   var proposed;
+   var prime;
+   var i;
 
    switch(number){
    case 2:return 2;
@@ -21,26 +58,34 @@ function findLargestPrimeFactor(number){
       return number;
    }
 
-   for(i=3;i<=half;i+=2){
-      divisor=number/i;
-      if(divisor%2===0)continue;
-      if(divisor%3===0)continue;
-      if(isPrime(divisor)){
-         largestPrime=divisor;
+   if(isPrime(half)){
+      return half;
+   }
+
+   if((half % 2) === 0){
+      half-=1;//make it odd
+   }
+
+   for(i=0;i<half;i+=4){
+      proposed=half-i;
+      if(proposed%3===0)continue;
+      if(proposed%5===0)continue;
+      prime=isPrime(proposed);
+      if(prime && (number%proposed) === 0){
+         return proposed;
       }
    }
-   return largestPrime;
 }
+*/
 
-/*
+/* This was very fast, but it didn't consider numbers where the largest prime
+ * factor was equal to half.
 function findLargestPrimeFactor(number){
    var m;
    var i;
    var largestPrime;
    var prime;
 
-   console.log('number');
-   console.log(number);
    if(isPrime(number)){
       return number;
    }
