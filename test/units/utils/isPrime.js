@@ -13,4 +13,5 @@ function testIsPrime(){
    assert(isPrime(5));
    assert(!isPrime(6));
    assert(isPrime(7));
+   assert(isPrime(7927));
 }
