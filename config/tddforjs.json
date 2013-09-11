@@ -26,7 +26,7 @@
       "integrations":"./integrations",
       "units":"./units",
       "names":{
-         "units":[".*\\.js"],
+         "units":[".*(?:problem 7|isPrime)\\.js"],
          "integrations":[".*\\.js"]
       }
    }
